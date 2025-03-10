@@ -1,37 +1,21 @@
+"use strict";
+
 const express = require("express");
 const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+
 const app = express();
 const router = express.Router();
+
+mongoose.connect("mongodb://izalopes:ilr202412@localhost:27017/admin");
+
+const indexRoutes = require("./routes/index-routes");
+const productsRoutes = require("./routes/products-routes");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-const route = router.get("/", (req, res, next) => {
-  res.status(200).send({
-    title: "MaskShop API",
-    version: "1.0.0",
-  });
-});
-
-const create = router.post("/", (req, res, next) => {
-  res.status(201).send(req.body);
-});
-
-const put = router.put("/:id", (req, res, next) => {
-  const id = req.params.id;
-  res.status(200).send({
-    id: id,
-    item: req.body,
-  });
-});
-
-const delete_item = router.delete("/", (req, res, next) => {
-  res.status(200).send(req.body);
-});
-
-app.use("/", route);
-app.use("/products", create);
-app.use("/products", put);
-app.use("/products", delete_item);
+app.use("/", indexRoutes);
+app.use("/products", productsRoutes);
 
 module.exports = app;
