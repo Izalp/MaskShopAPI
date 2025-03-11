@@ -7,7 +7,15 @@ const mongoose = require("mongoose");
 const app = express();
 const router = express.Router();
 
-mongoose.connect("mongodb://izalopes:ilr202412@localhost:27017/admin");
+mongoose
+  .connect("mongodb://127.0.0.1:27017/mongodb", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("Conectado ao MongoDB"))
+  .catch((err) => console.error("Erro ao conectar ao MongoDB:", err));
+
+const Product = require("./models/product");
 
 const indexRoutes = require("./routes/index-routes");
 const productsRoutes = require("./routes/products-routes");
