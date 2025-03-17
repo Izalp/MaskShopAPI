@@ -36,7 +36,7 @@ exports.post = async (req, res, next) => {
 
     emailService.send(
       req.body.email,
-      "Bem vindo ao Node Store",
+      "Bem vindo ao Mask Shop",
       global.EMAIL_TMPL.replace("{0}", req.body.name)
     );
 
