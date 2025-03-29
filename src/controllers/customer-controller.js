@@ -4,7 +4,6 @@ const ValidationContract = require("../validators/fluent-validator");
 const repository = require("../repositories/customer-repository");
 const md5 = require("md5");
 const authService = require("../services/auth-service");
-
 const emailService = require("../services/email-service");
 
 exports.post = async (req, res, next) => {
@@ -21,9 +20,27 @@ exports.post = async (req, res, next) => {
     "A senha deve conter pelo menos 6 caracteres"
   );
 
+  if (!req.body.name || !req.body.email || !req.body.password) {
+    return res.status(400).send({
+      errors: [
+        { message: "Os campos são obrigatórios" },
+      ],
+    });
+  }
+
+  const existingCustomer = await repository.getByEmail(req.body.email);
+  if (existingCustomer) {
+    return res.status(400).send({
+      errors: [
+        { message: "E-mail já cadastrado" },
+      ],
+    });
+  }
+
   if (!contract.isValid()) {
-    res.status(400).send(contract.errors()).end();
-    return;
+    return res.status(400).send({
+      errors: contract.errors(),
+    });
   }
 
   try {
@@ -90,7 +107,6 @@ exports.refreshToken = async (req, res, next) => {
     const token =
       req.body.token || req.query.token || req.headers["x-access-token"];
     const data = await authService.decodeToken(token);
-
     const customer = await repository.getById(data.id);
 
     if (!customer) {
@@ -108,7 +124,7 @@ exports.refreshToken = async (req, res, next) => {
     });
 
     res.status(201).send({
-      token: token,
+      token: tokenData,
       data: {
         email: customer.email,
         name: customer.name,
