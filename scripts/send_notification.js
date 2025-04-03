@@ -1,6 +1,6 @@
 "use strict";
 
-const emailService = require("../services/emailService");
+const emailService = require("../services/email-service");
 const recipientEmail = process.env.EMAIL_RECIPIENT;
 
 const subject = "Notificação: Pipeline Executado";
