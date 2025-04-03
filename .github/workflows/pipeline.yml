@@ -56,9 +56,14 @@ jobs:
   
       - name: Install dependencies
         run: npm install
+
+      - name: Packaging with ncc
+        run: ncc build bin/server.js -o dist
         
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
           name: maskshop-build
+          path: dist
+          
 
