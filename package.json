@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node ./bin/server.js",
     "dev": "nodemon bin/server.js",
-    "test": "jest"
+    "test": "jest",
+    "build": "npx @vercel/ncc build bin/server.js -o dist"
   },
   "keywords": [],
   "author": "Iza Lopes",
