@@ -50,8 +50,6 @@ npm test
 
 ## Endpoints da API
 
-## Endpoints da API
-
 ### Autenticação
 - **POST** `/customers` → Cadastra um novo cliente.  
 - **POST** `/customers/authenticate` → Autentica um cliente e gera um token JWT.  
