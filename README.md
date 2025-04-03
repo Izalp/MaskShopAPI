@@ -1,6 +1,6 @@
 # MaskShopAPI 🎭
 
-MaskShop é uma API desenvolvida em Node.js para gerenciar clientes, produtos e pedidos de uma loja online de máscaras.
+MaskShop é uma API desenvolvida em Node.js para gerenciar clientes, produtos e pedidos de uma loja de máscaras.
 
 ## Tecnologias Utilizadas
 
@@ -75,5 +75,5 @@ Este projeto utiliza **GitHub Actions** para:
 - Enviar notificações por e-mail após a execução do pipeline.
 
 ## Autor
-**Iza Lopes**
+Desenvolvido por **Iza Lopes**
 
