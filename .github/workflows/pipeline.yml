@@ -22,6 +22,16 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Create config.js
+        run: |
+          echo "global.SALT_KEY = '${{ secrets.SALT_KEY }}';" > ./src/config.js
+          echo "global.EMAIL_TMPL = 'Olá, <strong>{0}</strong>, seja bem vindo à Mask Shop!';" >> ./src/config.js
+          echo "module.exports = {" >> ./src/config.js
+          echo "  connectionString: '${{ secrets.MONGODB_CONNECTION }}'," >> ./src/config.js
+          echo "  sendgridKey: '${{ secrets.SENDGRID_API_KEY }}'," >> ./src/config.js
+          echo "  containerConnectionString: 'TBD'" >> ./src/config.js
+          echo "};" >> ./src/config.js
+
       - name: Run tests
         run: npm test 
 
