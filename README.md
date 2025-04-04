@@ -73,5 +73,5 @@ Este projeto utiliza **GitHub Actions** para:
 - Enviar notificações por e-mail após a execução do pipeline.
 
 ## Autor
-Desenvolvido por **Iza Lopes**
+Desenvolvido por [**Iza Lopes**](https://github.com/Izalp)
 
