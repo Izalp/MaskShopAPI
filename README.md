@@ -1,3 +1,5 @@
+[![CIDC - MaskShopAPI](https://github.com/Izalp/MaskShopAPI/actions/workflows/pipeline.yml/badge.svg)](https://github.com/Izalp/MaskShopAPI/actions/workflows/pipeline.yml)
+
 # MaskShopAPI 🎭
 
 MaskShop é uma API desenvolvida em Node.js para gerenciar clientes, produtos e pedidos de uma loja de máscaras.
