@@ -1,16 +1,7 @@
-"use strict";
+const emailService = require('../src/services/email-service');
 
-const recipientEmail = process.env.EMAIL_RECIPIENT;
-const emailService = require("../src/services/email-service")
+const recipient = process.env.EMAIL_RECIPIENT;
+const subject = 'Pipeline Executado';
+const body = '<p>O pipeline foi executado com sucesso.</p>';
 
-const subject = "Notificação: Pipeline Executado";
-const body = "<strong>O pipeline foi executado com sucesso.</strong>";
-
-emailService.send(recipientEmail, subject, body)
-  .then(() => {
-    console.log("E-mail enviado com sucesso.");
-  })
-  .catch((error) => {
-    console.error("Erro ao enviar e-mail:", error);
-    process.exit(1); 
-  });
+emailService.send(recipient, subject, body);
